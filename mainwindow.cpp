@@ -61,9 +61,9 @@ MainWindow::~MainWindow()
     delete d;
 }
 
-void MainWindow::addnewvalve()
+void MainWindow::addnewvalve(int x, int y)
 {
-    sim->unitops.push_back(new valve(0,100,100,1,0.5));
+    sim->unitops.push_back(new valve(0,x, y,1,0.5));
 }
 
 void MainWindow::colorPickTriggered()

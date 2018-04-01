@@ -2,10 +2,15 @@
 
 baseclass::baseclass(int anr, double ax, double ay)
 {
-
+    location = new point(ax, ay);
 }
 
-void baseclass::draw()
+baseclass::~baseclass()
+{
+    delete location;
+}
+
+void baseclass::draw(QImage *graphics)
 {
 
 }

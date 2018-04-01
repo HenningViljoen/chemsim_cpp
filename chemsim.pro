@@ -32,7 +32,9 @@ SOURCES += \
     baseprocessclass.cpp \
     unitop.cpp \
     valve.cpp \
+    global.cpp \
     simulation.cpp
+
 
 HEADERS += \
         mainwindow.h \

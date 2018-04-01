@@ -2,6 +2,7 @@
 #define BASECLASS_H
 
 #include <string>
+#include <QObject>
 
 #include "point.h"
 
@@ -17,7 +18,8 @@ public:
     point *points; //Points used for the item on the PFD.  Expressed in meters.
 
     baseclass(int anr, double ax, double ay);
-    virtual void draw();
+    ~baseclass();
+    virtual void draw(QImage *graphics);
 };
 
 #endif // BASECLASS_H

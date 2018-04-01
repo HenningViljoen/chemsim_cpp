@@ -14,7 +14,7 @@ public:
     simulation();
     ~simulation();
 
-    void drawnetwork(QImage G);
+    void drawnetwork(QImage *graphics);
 };
 
 #endif // SIMULATION_H

@@ -10,7 +10,7 @@ public:
     valve(int anr, double ax, double ay, double aCv, double aop);
     //void valve()
 
-    void draw();
+    void draw(QImage *graphics);
 };
 
 #endif // VALVE_H

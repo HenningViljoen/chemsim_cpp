@@ -25,10 +25,12 @@ void DrawWidget::drawPixel(QPoint pt){
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
     if (event->buttons() & Qt::LeftButton) {
+        int xonplant = event->pos().x();
+        int yonplant = event->pos().y();
         if (parent_window->drawwing_mode_entity == ValveMode) {
-            parent_window->addnewvalve();
-            //parent_window->sim->unitops
-            drawPixel(event->pos());
+            parent_window->addnewvalve(xonplant, yonplant);
+            parent_window->sim->drawnetwork(&m_canvas);
+            //drawPixel(event->pos());
             repaint();
 
         }
@@ -36,7 +38,8 @@ void DrawWidget::mousePressEvent(QMouseEvent *event){
 }
 
 void DrawWidget::mouseMoveEvent(QMouseEvent *event){
-
+    //parent_window->sim->drawnetwork(&m_canvas);
+    //repaint();
     if(event->buttons() & Qt::LeftButton){
         /*
         if (parent_window->drawwing_mode_entity == ValveMode) {
