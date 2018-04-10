@@ -33,7 +33,13 @@ SOURCES += \
     unitop.cpp \
     valve.cpp \
     global.cpp \
-    simulation.cpp
+    simulation.cpp \
+    component.cpp \
+    molecule.cpp \
+    matrix.cpp \
+    controlvar.cpp \
+    exceldataset.cpp \
+    utilities.cpp
 
 
 HEADERS += \
@@ -45,7 +51,13 @@ HEADERS += \
     unitop.h \
     valve.h \
     global.h \
-    simulation.h
+    simulation.h \
+    component.h \
+    molecule.h \
+    matrix.h \
+    controlvar.h \
+    exceldataset.h \
+    utilities.h
 
 FORMS += \
         mainwindow.ui

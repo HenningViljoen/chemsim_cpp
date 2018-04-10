@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include <QApplication>
 
-//#include "global.h"
+#include "exceldataset.h"
 
 int main(int argc, char *argv[])
 {
-    //global_class global = global_class();
+    //exceldataset excel("/Users/johanneshenningviljoen/Dropbox/Projects-DB/ChemSim/Electronic_data/135-ES-004/170728/135TI0015.PV.csv");
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

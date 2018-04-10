@@ -1,10 +1,12 @@
 #include "valve.h"
 #include <QPainter>
+#include <iostream>
 #include "global.h"
 
 valve::valve(int anr, double ax, double ay, double aCv, double aop) : unitop{anr, ax, ay, 1, 1}
 {
     int h = global::TimerInterval;
+    std::cout << h;
 }
 
 void valve::draw(QImage *graphics)
