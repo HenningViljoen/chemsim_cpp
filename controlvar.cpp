@@ -1,11 +1,11 @@
 #include "controlvar.h"
 
 
+
 controlvar::controlvar(double av, bool aisbool)
 {
     v = av;
     isbool = aisbool;
-    simvector = nullptr;
     //simvector = new double[global.SimIterations];
     excelsource = nullptr;
     datasource = Simulation;
@@ -13,16 +13,20 @@ controlvar::controlvar(double av, bool aisbool)
 
 controlvar::~controlvar()
 {
-    if (simvector != nullptr) {delete simvector;}
-
     if (excelsource != nullptr) {delete excelsource;}
 }
 
-controlvar::controlvar(controlvar *copyfrom)
+controlvar::controlvar(const controlvar &copyfrom)
 {
-     v = copyfrom->v;
-     excelsource = copyfrom->excelsource;
-     datasource = copyfrom->datasource;
+     v = copyfrom.v;
+     excelsource = copyfrom.excelsource;
+     datasource = copyfrom.datasource;
+}
+
+controlvar &controlvar::operator=(const controlvar &cv)
+{
+    controlvar cont(cv);
+    return cont;
 }
 
 void controlvar::copyfrom(controlvar *copyfrom)

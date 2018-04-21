@@ -39,7 +39,10 @@ SOURCES += \
     matrix.cpp \
     controlvar.cpp \
     exceldataset.cpp \
-    utilities.cpp
+    utilities.cpp \
+    complex.cpp \
+    material.cpp \
+    stream.cpp
 
 
 HEADERS += \
@@ -57,7 +60,10 @@ HEADERS += \
     matrix.h \
     controlvar.h \
     exceldataset.h \
-    utilities.h
+    utilities.h \
+    complex.h \
+    material.h \
+    stream.h
 
 FORMS += \
         mainwindow.ui

@@ -9,8 +9,13 @@ public:
     double y;
     bool highlighted;
 
+    point();
     point(double ax, double ay);
-    point(point* pointcopyfrom);
+    point(point const &pointcopyfrom);
+
+    point &operator=(const point &p);
+
+    void copyfrom(const point &pointcopyfrom);
     void setxy(double ax, double ay);
 };
 

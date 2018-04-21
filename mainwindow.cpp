@@ -61,7 +61,7 @@ MainWindow::~MainWindow()
     delete d;
 }
 
-void MainWindow::addnewvalve(int x, int y)
+void MainWindow::addnewvalve(double x, double y)
 {
     sim->unitops.push_back(new valve(0,x, y,1,0.5));
 }

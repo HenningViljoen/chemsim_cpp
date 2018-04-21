@@ -2,6 +2,7 @@
 #define CONTROLVAR_H
 
 #include <math.h>
+#include <vector>
 #include "global.h"
 #include "exceldataset.h"
 
@@ -10,15 +11,16 @@ class controlvar
 public:
     double v; //The variable in this object that will have the PV or OP to be controlled in the simulation.
     bool isbool; //Is this a boolean variable?  Could then be part of a hybrid system.
-    double *simvector;
+    std::vector<double> simvector;
 
     exceldataset *excelsource; // for the case that data will be drawn in from an Excel file.
     datasourceforvar datasource; //The source of data for the variable in the model.
 
     controlvar(double av = 0, bool aisbool = false);
-    controlvar(controlvar *copyfrom);
+    controlvar(const controlvar &copyfrom);
     ~controlvar();
 
+    controlvar &operator=(const controlvar &cv);
     void copyfrom(controlvar *copyfrom);
     std::string ToString(std::string format = "");
 

@@ -32,118 +32,122 @@ double *initsimtimevector(double *simtimevector)
     return simtimevector;
 }
 
-std::vector<component *> &generate_fluid_pacage()
+std::vector<component> &generate_fluid_pacage()
 {
     //public molecule(string anabreviation, string aname, double amolarmass, double adynamicviscosity, double adensity, double aTc = 500, double aPc = 50*100000,
     //double aomega = 0.3, double aCpA = -4.224, double aCpB = 0.3063, double aCpC = -1.586e-04, double aCpD = 3.215e-08)
 
-    std::vector<component *> fluidpackage;
+    std::vector<component> fluidpackage;
 
-    fluidpackage.push_back(new component(new molecule("Naphtha", "GTL Naphtha", 0.157, 0.00164, 661.4959, 273 + 495, 1.2411 * pow(10, 7),
+    fluidpackage.push_back(component(new molecule("Naphtha", "GTL Naphtha", 0.157, 0.00164, 661.4959, 273 + 495, 1.2411 * pow(10, 7),
                     -1 - log10(110000 /1.2411 * pow(10, 7)) , 150.5, 0.6, 0, 0), 0));
 
-    fluidpackage.push_back(new component(new molecule("Air", "Air", 0.02897, 1.983 * pow(10, -5), 1.225, 132.41, 3.72 * pow(10, 6),
+    fluidpackage.push_back(component(new molecule("Air", "Air", 0.02897, 1.983 * pow(10, -5), 1.225, 132.41, 3.72 * pow(10, 6),
                     0.0335,
                     0.8*31.15  + 0.2*28.11, 0.8*(-0.01357)  + 0.2*(-3.7) * pow(10, -6), 0.8*2.68*pow(10,-5)  + 0.2*1.746 * pow(10, -5),
                 0.8 * (-1.168) * pow(10, -8) + 0.2 * (-1.065) * pow(10, -8)), 0));
                 //Density: 1.977 kg/m3 (gas at 1 atm and 0 °C)
 
-    fluidpackage.push_back(new component(new molecule("CO2", "Carbon Dioxide", 0.018, 0.07 * 0.001, 1.977, 304.25, 7.39 * pow(10, 6), 0.228,
+    fluidpackage.push_back(component(new molecule("CO2", "Carbon Dioxide", 0.018, 0.07 * 0.001, 1.977, 304.25, 7.39 * pow(10, 6), 0.228,
                     19.8, 0.07344, -5.602E-05, 1.715E-08), 0));
                 //Density: 1.977 kg/m3 (gas at 1 atm and 0 °C)
 
-    fluidpackage.push_back(new component(new molecule("CO", "Carbon Monoxide", 0.02801, 0.0001662 * 0.001, 1.145), 0));
+    fluidpackage.push_back(component(new molecule("CO", "Carbon Monoxide", 0.02801, 0.0001662 * 0.001, 1.145), 0));
                 //Density: 1.145 kg/m3 at 25 °C, 1 atm
 
-    fluidpackage.push_back(new component(new molecule("H2", "Hydrogen", 0.0020158, 8.76 * pow(10, -6), 0.08988), 0));
+    fluidpackage.push_back( component(new molecule("H2", "Hydrogen", 0.0020158, 8.76 * pow(10, -6), 0.08988), 0));
                 //Density: 0.08988 g/L = 0.08988 kg/m3 (0 °C, 101.325 kPa)
 
-    fluidpackage.push_back(new component(new molecule("He", "Helium", global::HeMolarMass, 0, 0.1786, 5.1953, 5.1953E6, -0.390,
+    fluidpackage.push_back( component(new molecule("He", "Helium", global::HeMolarMass, 0, 0.1786, 5.1953, 5.1953E6, -0.390,
                     20.8, 0, 0, 0), 0));
                 //essentially no viscosity.
 
-    fluidpackage.push_back(new component(new molecule("CH4", "Methane", 0.01604, 0.0001027 * 0.001, 0.6556), 0));
+    fluidpackage.push_back( component(new molecule("CH4", "Methane", 0.01604, 0.0001027 * 0.001, 0.6556), 0));
                 //Density: 0.6556 g L−1 = 0.6556 kg/m3
 
-    fluidpackage.push_back(new component(new molecule("CH4O", "Methanol", 0.03204, 5.9E-04, 791.8, 513, 80.9 * 100000, 0.556,
+    fluidpackage.push_back( component(new molecule("CH4O", "Methanol", 0.03204, 5.9E-04, 791.8, 513, 80.9 * 100000, 0.556,
                     21.15, 0.07092, 2.587E-05, -2.852E-08), 0));
                 //Density: 0.6556 g L−1 = 0.6556 kg/m3
 
-    fluidpackage.push_back(new component(new molecule("N", "Nitrogen", 0.028, 0.018 * 0.001, 1.251,126.192, 3.3958*pow(10,6), 0.04,
+    fluidpackage.push_back( component(new molecule("N", "Nitrogen", 0.028, 0.018 * 0.001, 1.251,126.192, 3.3958*pow(10,6), 0.04,
                     31.15, -0.01357, 2.68*pow(10,-5), -1.168*pow(10,-8)), 0));
                 //Density: 1.251 g/L = 1.251 kg/m3
-    fluidpackage.push_back(new component(new molecule("O2", "Oxygen", 0.016, 2.04 * pow(10, -5), 1.429, 154.581, 5.043 * pow(10, 6),
+    fluidpackage.push_back( component(new molecule("O2", "Oxygen", 0.016, 2.04 * pow(10, -5), 1.429, 154.581, 5.043 * pow(10, 6),
                     0.022, 28.11, -3.7 * pow(10, -6), 1.746 * pow(10, -5), -1.065 * pow(10, -8)), 0));
 
-    fluidpackage.push_back(new component(new molecule("H2O", "Water", 0.0180153, global::WaterDensity, 1, 647.096, 22060000, 0.344,
+    fluidpackage.push_back( component(new molecule("H2O", "Water", 0.0180153, global::WaterDensity, 1, 647.096, 22060000, 0.344,
                     7.243e01, 1.039e-2, -1.497e-6, 0), 1.0));
                 //Density: 1000 kg/m3
                 //Dynamic viscosity for water at 20 Deg C
 
-    fluidpackage.push_back(new component(new molecule("C2H6", "Ethane", 0.03007, 0, 1.3562 * 100), 0)); //Just assume no viscosity for the moment.
-    fluidpackage.push_back(new component(new molecule("C3H8", "Propane", 0.03007, 0, 1.3562 * 100, 369.8, 42.5 * 100000, 0.153,
+    fluidpackage.push_back( component(new molecule("C2H6", "Ethane", 0.03007, 0, 1.3562 * 100), 0)); //Just assume no viscosity for the moment.
+    fluidpackage.push_back( component(new molecule("C3H8", "Propane", 0.03007, 0, 1.3562 * 100, 369.8, 42.5 * 100000, 0.153,
                     -4.224, 0.3063, -1.586e-04, 3.215e-08), 0)); //Just assume no viscosity for the moment.
-    fluidpackage.push_back(new component(new molecule("C4H10", "Butane", 58.12 / 1000, 0, 2.48 * 100, 425.2, 38.0 * 100000, 0.199,
+    fluidpackage.push_back( component(new molecule("C4H10", "Butane", 58.12 / 1000, 0, 2.48 * 100, 425.2, 38.0 * 100000, 0.199,
                     9.487, 0.3313, -1.108e-04, -2.822e-09), 0)); //Just assume no viscosity for the moment.
-    fluidpackage.push_back(new component(new molecule("C5H12", "Pentane", 72.15 / 1000, 240 / 1000000,
+    fluidpackage.push_back( component(new molecule("C5H12", "Pentane", 72.15 / 1000, 240 / 1000000,
                     0.626 * 1000), 0));
-    fluidpackage.push_back(new component(new molecule("C6H14", "2-Methylpentane", 86.18 / 1000, 0,
+    fluidpackage.push_back( component(new molecule("C6H14", "2-Methylpentane", 86.18 / 1000, 0,
                     653), 0));
-    fluidpackage.push_back(new component(new molecule("C7H16", "Heptane", 100.20 / 1000, 386 / 1000000,
+    fluidpackage.push_back( component(new molecule("C7H16", "Heptane", 100.20 / 1000, 386 / 1000000,
                     679.5), 0));
-    fluidpackage.push_back(new component(new molecule("C8H18", "Octane", 114.23 / 1000, 542 / 1000000,
+    fluidpackage.push_back( component(new molecule("C8H18", "Octane", 114.23 / 1000, 542 / 1000000,
                     0.703 * 1000), 0));
-    fluidpackage.push_back(new component(new molecule("C9H20", "Nonane", 128.26 / 1000, 0.711 / 1000, 718), 0));
-    fluidpackage.push_back(new component(new molecule("C10H22", "Decane", 142.28 / 1000, 0.920 / 1000, 730, 617.8, 21.1 * 100000), 0));
-    fluidpackage.push_back(new component(new molecule("C11H24", "Undecane", 156.30826 / 1000, 0.920 / 1000, 740.2), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C12H26", "Dodecane", 170.33 / 1000, 1.35 / 1000, 780.8), 0));
-    fluidpackage.push_back(new component(new molecule("C13H28", "Tridecane", 184.36 / 1000, 0, 756), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C14H30", "Tetradecane", 198.39 / 1000, 2.18 / 1000, 756), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C15H32", "Pentadecane", 212.41 / 1000, 0, 769), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C16H34", "Hexadecane", 226.44 / 1000, 3.34 / 1000, 770), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C17H36", "Heptadecane", 240.47 / 1000, 0, 777), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C18H38", "Octadecane", 254.494 / 1000, 0, 777), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C19H40", "Nonadecane", 268.5209 / 1000, 0, 786), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C20H42", "Icosane", 282.55 / 1000, 0, 786), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C21H44", "Heneicosane", 296.6 / 1000, 0, 792), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C22H46", "Docosane", 310.61 / 1000, 0, 778), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C23H48", "Tricosane ", 324.63 / 1000, 0, 797), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C24H50", "Tetracosane", 338.66 / 1000, 0, 797), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C25H52", "Pentacosane", 352.69 / 1000, 0, 801), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C26H54", "Hexacosane", 366.71 / 1000, 0, 778), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C27H56", "Heptacosane", 380.74 / 1000, 0, 780), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C28H58", "Octacosane", 394.77 / 1000, 0, 807), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C29H60", "Nonacosane", 408.80 / 1000, 0, 808), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C30H62", "Triacontane", 422.82 / 1000, 0, 810), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C31H64", "Hentriacontane", 436.85 / 1000, 0, 781), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C32H66", "Dotriacontane", 450.88 / 1000, 0, 812), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C33H68", "Tritriacontane", 464.90 / 1000, 0, 811), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C34H70", "Tetratriacontane ", 478.93 / 1000, 0, 812), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C35H72", "Pentatriacontane ", 492.96 / 1000, 0, 813), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C36H74", "Hexatriacontane", 506.98 / 1000, 0, 814), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C37H76", "Heptatriacontane", 520.99 / 1000, 0, 815), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C38H78", "Octatriacontane", 535.03 / 1000, 0, 816), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C39H80", "Nonatriacontane", 549.05 / 1000, 0, 817), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C40H82", "Tetracontane", 563.08 / 1000, 0, 817), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C41H84", "Hentetracontane", 577.11 / 1000, 0, 818), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C42H86", "Dotetracontane", 591.13 / 1000, 0, 819), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C43H88", "Triatetracontane", 605.15 / 1000, 0, 820), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C44H90", "Tetratetracontane", 619.18 / 1000, 0, 820), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C45H92", "Pentatetracontane", 633.21 / 1000, 0, 821), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C46H94", "Hexatetracontane", 647.23 / 1000, 0, 822), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C47H96", "Heptatetracontane", 661.26 / 1000, 0, 822), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C48H98", "Octatetracontane", 675.29 / 1000, 0, 823), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C49H100", "Nonatetracontane", 689.32 / 1000, 0, 823), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C50H102", "Pentacontane", 703.34 / 1000, 0, 824), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C51H104", "Henpentacontane", 717.37 / 1000, 0, 824), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C52H106", "Dopentacontane", 731.39 / 1000, 0, 825), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C53H108", "Tripentacontane", 745.42 / 1000, 0, 825), 0)); // Just assume zero viscosity for now.
-    fluidpackage.push_back(new component(new molecule("C54H110", "Tetrapentacontane", 759.45 / 1000, 0, 826), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C9H20", "Nonane", 128.26 / 1000, 0.711 / 1000, 718), 0));
+    fluidpackage.push_back( component(new molecule("C10H22", "Decane", 142.28 / 1000, 0.920 / 1000, 730, 617.8, 21.1 * 100000), 0));
+    fluidpackage.push_back( component(new molecule("C11H24", "Undecane", 156.30826 / 1000, 0.920 / 1000, 740.2), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C12H26", "Dodecane", 170.33 / 1000, 1.35 / 1000, 780.8), 0));
+    fluidpackage.push_back( component(new molecule("C13H28", "Tridecane", 184.36 / 1000, 0, 756), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C14H30", "Tetradecane", 198.39 / 1000, 2.18 / 1000, 756), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C15H32", "Pentadecane", 212.41 / 1000, 0, 769), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C16H34", "Hexadecane", 226.44 / 1000, 3.34 / 1000, 770), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C17H36", "Heptadecane", 240.47 / 1000, 0, 777), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C18H38", "Octadecane", 254.494 / 1000, 0, 777), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C19H40", "Nonadecane", 268.5209 / 1000, 0, 786), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C20H42", "Icosane", 282.55 / 1000, 0, 786), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C21H44", "Heneicosane", 296.6 / 1000, 0, 792), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C22H46", "Docosane", 310.61 / 1000, 0, 778), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C23H48", "Tricosane ", 324.63 / 1000, 0, 797), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C24H50", "Tetracosane", 338.66 / 1000, 0, 797), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C25H52", "Pentacosane", 352.69 / 1000, 0, 801), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C26H54", "Hexacosane", 366.71 / 1000, 0, 778), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C27H56", "Heptacosane", 380.74 / 1000, 0, 780), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C28H58", "Octacosane", 394.77 / 1000, 0, 807), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C29H60", "Nonacosane", 408.80 / 1000, 0, 808), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C30H62", "Triacontane", 422.82 / 1000, 0, 810), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C31H64", "Hentriacontane", 436.85 / 1000, 0, 781), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C32H66", "Dotriacontane", 450.88 / 1000, 0, 812), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C33H68", "Tritriacontane", 464.90 / 1000, 0, 811), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C34H70", "Tetratriacontane ", 478.93 / 1000, 0, 812), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C35H72", "Pentatriacontane ", 492.96 / 1000, 0, 813), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C36H74", "Hexatriacontane", 506.98 / 1000, 0, 814), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C37H76", "Heptatriacontane", 520.99 / 1000, 0, 815), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C38H78", "Octatriacontane", 535.03 / 1000, 0, 816), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C39H80", "Nonatriacontane", 549.05 / 1000, 0, 817), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C40H82", "Tetracontane", 563.08 / 1000, 0, 817), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C41H84", "Hentetracontane", 577.11 / 1000, 0, 818), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C42H86", "Dotetracontane", 591.13 / 1000, 0, 819), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C43H88", "Triatetracontane", 605.15 / 1000, 0, 820), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C44H90", "Tetratetracontane", 619.18 / 1000, 0, 820), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C45H92", "Pentatetracontane", 633.21 / 1000, 0, 821), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C46H94", "Hexatetracontane", 647.23 / 1000, 0, 822), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C47H96", "Heptatetracontane", 661.26 / 1000, 0, 822), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C48H98", "Octatetracontane", 675.29 / 1000, 0, 823), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C49H100", "Nonatetracontane", 689.32 / 1000, 0, 823), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C50H102", "Pentacontane", 703.34 / 1000, 0, 824), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C51H104", "Henpentacontane", 717.37 / 1000, 0, 824), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C52H106", "Dopentacontane", 731.39 / 1000, 0, 825), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C53H108", "Tripentacontane", 745.42 / 1000, 0, 825), 0)); // Just assume zero viscosity for now.
+    fluidpackage.push_back( component(new molecule("C54H110", "Tetrapentacontane", 759.45 / 1000, 0, 826), 0)); // Just assume zero viscosity for now.
 
                 //public molecule(string anabreviation, string aname, double amolarmass, double adynamicviscosity (Pa·s), double adensity, double adefaultmolefraction)
     return fluidpackage;
 }
 
+std::vector<std::string> global::objecttypes_strings =
+    { "FTReactor", "GasPipe", "LiquidPipe", "Pump", "Tank", "Valve", "Tee", "Mixer", "StreamObjectType", "PIDController", "HX",
+       "HeatExchangerSimple", "SteamGenerator", "Flange", "NMPC", "CoolingTower", "CoolingTowerSimple", "CoolingTowerHeatExchangerSimple",
+       "DistillationColumn", "Signal", "Selector", "ControlMVSignalSplitter" };
 
 int global::TimerInterval = 1; // micro seconds
 double global::SpeedUpFactor = 200; //50, CT and normal sim: 200; //factor  Heat exchangers: 30000
@@ -182,9 +186,9 @@ double global::Epsilon = 0.00000001; //small number that is added to a denominat
 double global::ConvergeDiffFrac = 0.001; //Fraction difference or less that will be treated as convergance.
 
 //Screen constants
-double global::GScale = 1600 / 100; //pixels per m
-int global::OriginX = 10; //pixels
-int global::OriginY = 60; //pixels
+double global::GScale = 1600.0 / 100.0; //pixels per m
+int global::OriginX = 0; //pixels; 10 in csharp
+int global::OriginY = 0; //pixels; 60 in csharp
 double global::DefaultLocationX = 0;
 double global::DefaultLocationY = 0;
 double global::MinDistanceFromPoint = 0.5; //m : Minimum Distance from each point for it to be selected
@@ -658,7 +662,7 @@ double global::HESStrm1SegmentVolume = global::HESShellVolume / global::HESNSegm
 double global::Udefault = 19500 * 100000; //Joule
 double global::Vdefault = 18.01528 * 100000 / 1000 / 1000; //m^3
 double global::fdefault = 0.5; //Vapour molar fraction. just a value in order to get some convergiance.
-std::vector<component *> fluidpackage = generate_fluid_pacage();
+std::vector<component> global::fluidpackage = generate_fluid_pacage();
 materialphase global::MaterialInitPhase = Liquid;
 int global::NMaterialIterations = 10;
 double global::ZNotDefined = -999999.0;

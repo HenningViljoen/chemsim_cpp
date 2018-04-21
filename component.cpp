@@ -1,5 +1,12 @@
 #include "component.h"
 
+component::component()
+{
+    molefraction = 0.0;
+    n = 0.0;
+    m = nullptr;
+}
+
 component::component(molecule *am, double amolefraction, double an)
 {
     molefraction = amolefraction;
@@ -8,17 +15,30 @@ component::component(molecule *am, double amolefraction, double an)
     //massfraction = amassfraction;
 }
 
-component::~component()
+component::component(const component &c)
 {
-    //no deletes needed as there were no news.
+    copytothisobject(c);
 }
 
-void component::copytothisobject(component *c)
+component::~component()
 {
-    m = c->m; //Do not make a copy of the c.m object, just point to the address of c.m, since c.m should never change between unit ops - it is part
+    //if (molecule != nullptr) {delete molecule;}  I do not want to delete the molecule since it is allocated memory once in the fluidpackage
+        //and not again
+
+}
+
+component &component::operator=(const component &c)
+{
+    component comp(c);
+    return comp;
+}
+
+void component::copytothisobject(const component &c)
+{
+    m = c.m; //Do not make a copy of the c.m object, just point to the address of c.m, since c.m should never change between unit ops - it is part
     // of the fluid package.
-    molefraction = c->molefraction;
-    n = c->n;
-    massfraction = c->massfraction;
+    molefraction = c.molefraction;
+    n = c.n;
+    massfraction = c.massfraction;
     //molefraction = c.molefraction;
 }

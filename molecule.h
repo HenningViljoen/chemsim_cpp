@@ -26,6 +26,9 @@ public:
     molecule(std::string anabreviation, std::string aname, double amolarmass, double adynamicviscosity, double adensity,
              double aTc = 500, double aPc = 50*100000,
       double aomega = 0.3, double aCpA = -4.224, double aCpB = 0.3063, double aCpC = -1.586e-04, double aCpD = 3.215e-08);
+    molecule();
+    molecule(const molecule &amolecule);
+    molecule &operator=(const molecule &amolecule);
 
     double calcCp(double T);
 };

@@ -8,8 +8,10 @@
 enum DrawModeEntity {EditMode, ValveMode};
 
 enum objecttypes { FTReactor, GasPipe, LiquidPipe, Pump, Tank, Valve, Tee, Mixer, StreamObjectType, PIDController, HX,
-        HeatExchangerSimple, SteamGenerator, Flange, NMPC, CoolingTower, CoolingTowerSimple, CoolingTowerHeatExchangerSimple, DistillationColumn, Signal,
-        Selector, ControlMVSignalSplitter };
+        HeatExchangerSimple, SteamGenerator, Flange, NMPC, CoolingTower, CoolingTowerSimple, CoolingTowerHeatExchangerSimple,
+                   DistillationColumn, Signal, Selector, ControlMVSignalSplitter };
+
+
 
 enum liquidpipeflowreference { PipeEntrance, PipeEnd };
 
@@ -36,6 +38,8 @@ const DrawModeEntity DefaultDrawModeEntity = EditMode;
 class global
 {
 public:
+    static std::vector<std::string> objecttypes_strings;
+
     //Timing constants ---------------------------------------------------------------------------------------------------------------------------
     static int TimerInterval; // micro seconds
     static double SpeedUpFactor; //50, CT and normal sim: 200; //factor  Heat exchangers: 30000
@@ -385,7 +389,7 @@ public:
     static double HEM;
 
             //heatexchanger class : pressure drop / energy drop due to friction constants
-            ///public static double HEAddFriction = 10.0;
+            //public static double HEAddFriction = 10.0;
     static double HEStrm1AddFriction;
     static double HEStrm2AddFriction;
     static double HEStrm1DeltaPK[];
@@ -497,7 +501,7 @@ public:
     static double Udefault;
     static double Vdefault;
     static double fdefault;
-    static std::vector<component *> fluidpackage;
+    static std::vector<component> fluidpackage;
     static materialphase MaterialInitPhase;
     static int NMaterialIterations;
     static double ZNotDefined;

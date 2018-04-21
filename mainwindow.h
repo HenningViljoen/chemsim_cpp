@@ -22,7 +22,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void addnewvalve(int x, int y);
+    void addnewvalve(double x, double y);
 
 public slots:
     void colorPickTriggered();
